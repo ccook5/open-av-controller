@@ -2,19 +2,19 @@
 import socket
 import time
 
-DEST      = "172.16.112.210"
-DEST_PORT = 5000
+UDP_IP = "172.16.112.210"
+UDP_PORT = 5000
 
 
 class kramer_matrix_p2000:
 
-    def __init__(self, dest_address, dest_udp_port, machine_num):
-        self.dest_address = dest_address
+    def __init__(self, dest_ip_address, dest_udp_port, machine_num):
+        self.dest_ip_address = dest_ip_address
         self.dest_ip_port    = dest_udp_port
         self.machine_num     = machine_num
             
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-        self.sock.connect((self.dest_address, self.dest_ip_port))
+        self.sock.connect((self.dest_ip_address, self.dest_ip_port))
     
     def ident_switcher(self):
         matrix_name   = 'UNKNOWN'
@@ -111,6 +111,8 @@ class kramer_matrix_p2000:
             print('data is not a valid response. Check IP address and protocol settings.')
             return False
 
+
+    
         puts = { 0x80:'0',
                  0x81:'1',
                  0x82:'2',
@@ -228,7 +230,7 @@ class kramer_matrix_p2000:
 ##########################################
 
 def main():
-    mtrx = kramer_matrix_p2000(DEST, DEST_PORT, 1)
+    mtrx = kramer_matrix_p2000(UDP_IP, UDP_PORT, 1)
 
     mtrx.ident_switcher()
 
@@ -238,7 +240,9 @@ def main():
         for output in range(1,9):
             mtrx.set_output(output, input_num)
             mtrx.read_output(output)
-        time.sleep(1) 
+        time.sleep(1)
+
+                                    
 
 
 if __name__=="__main__":
