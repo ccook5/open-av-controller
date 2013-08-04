@@ -1,20 +1,13 @@
-from __future__ import print_function
+__all__ = ["runsimple"]
 
 import sys, os
+from SimpleHTTPServer import SimpleHTTPRequestHandler
 import urllib
 import posixpath
 
-from . import webapi as web
-from . import net
-from . import utils
-from .py3helpers import PY2
-
-if PY2:
-    from SimpleHTTPServer import SimpleHTTPRequestHandler
-else:
-    from http.server import SimpleHTTPRequestHandler
-
-__all__ = ["runsimple"]
+import webapi as web
+import net
+import utils
 
 def runbasic(func, server_address=("0.0.0.0", 8080)):
     """
@@ -79,15 +72,15 @@ def runbasic(func, server_address=("0.0.0.0", 8080)):
                     finally:
                         if hasattr(result, 'close'): 
                             result.close()
-                except socket.error as socket_err:
+                except socket.error, socket_err:
                     # Catch common network errors and suppress them
                     if (socket_err.args[0] in \
                        (errno.ECONNABORTED, errno.EPIPE)): 
                         return
-                except socket.timeout as socket_timeout: 
+                except socket.timeout, socket_timeout: 
                     return
             except:
-                print(traceback.format_exc(), file=web.debug)
+                print >> web.debug, traceback.format_exc(),
 
             if (not self.wsgi_sent_headers):
                 # We must write out something!
@@ -135,7 +128,7 @@ def runbasic(func, server_address=("0.0.0.0", 8080)):
             self.app = func
             self.serverShuttingDown = 0
 
-    print("http://%s:%d/" % server_address)
+    print "http://%s:%d/" % server_address
     WSGIServer(func, server_address).serve_forever()
 
 # The WSGIServer instance. 
@@ -156,9 +149,9 @@ def runsimple(func, server_address=("0.0.0.0", 8080)):
     server = WSGIServer(server_address, func)
 
     if server.ssl_adapter:
-        print("https://%s:%d/" % server_address)
+        print "https://%s:%d/" % server_address
     else:
-        print("http://%s:%d/" % server_address)
+        print "http://%s:%d/" % server_address
 
     try:
         server.start()
@@ -246,7 +239,7 @@ class StaticApp(SimpleHTTPRequestHandler):
             if etag == client_etag:
                 self.send_response(304, "Not Modified")
                 self.start_response(self.status, self.headers)
-                raise StopIteration()
+                raise StopIteration
         except OSError:
             pass # Probably a 404
 
@@ -323,4 +316,4 @@ class LogMiddleware:
         time = self.log_date_time_string()
 
         msg = self.format % (host, time, protocol, method, req, status)
-        print(utils.safestr(msg), file=outfile)
+        print >> outfile, utils.safestr(msg)

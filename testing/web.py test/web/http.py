@@ -10,9 +10,10 @@ __all__ = [
   "profiler",
 ]
 
-import sys, os, threading, urllib
-import datetime
-from . import net, utils, webapi as web
+import sys, os, threading, urllib, urlparse
+try: import datetime
+except ImportError: pass
+import net, utils, webapi as web
 
 def prefixurl(base=''):
     """

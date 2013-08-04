@@ -3,8 +3,6 @@
 General Utilities
 (part of web.py)
 """
-from __future__ import print_function
-
 
 __all__ = [
   "Storage", "storage", "storify", 
@@ -34,11 +32,22 @@ __all__ = [
 
 import re, sys, time, threading, itertools, traceback, os
 
-import subprocess
-import datetime
-from threading import local as threadlocal
+try:
+    import subprocess
+except ImportError: 
+    subprocess = None
 
-from .py3helpers import PY2, itervalues, iteritems, text_type, string_types, imap
+try: import datetime
+except ImportError: pass
+
+try: set
+except NameError:
+    from sets import Set as set
+    
+try:
+    from threading import local as threadlocal
+except ImportError:
+    from python23 import threadlocal
 
 class Storage(dict):
     """
@@ -63,8 +72,8 @@ class Storage(dict):
     def __getattr__(self, key): 
         try:
             return self[key]
-        except KeyError as k:
-            raise AttributeError(k)
+        except KeyError, k:
+            raise AttributeError, k
     
     def __setattr__(self, key, value): 
         self[key] = value
@@ -72,8 +81,8 @@ class Storage(dict):
     def __delattr__(self, key):
         try:
             del self[key]
-        except KeyError as k:
-            raise AttributeError(k)
+        except KeyError, k:
+            raise AttributeError, k
     
     def __repr__(self):     
         return '<Storage ' + dict.__repr__(self) + '>'
@@ -154,7 +163,7 @@ def storify(mapping, *requireds, **defaults):
             value = [value]
         setattr(stor, key, value)
 
-    for (key, value) in iteritems(defaults):
+    for (key, value) in defaults.iteritems():
         result = value
         if hasattr(stor, key): 
             result = stor[key]
@@ -185,13 +194,13 @@ class Counter(storage):
     
     def most(self):
         """Returns the keys with maximum count."""
-        m = max(itervalues(self))
-        return [k for k, v in iteritems(self) if v == m]
+        m = max(self.itervalues())
+        return [k for k, v in self.iteritems() if v == m]
         
     def least(self):
         """Returns the keys with mininum count."""
         m = min(self.itervalues())
-        return [k for k, v in iteritems(self) if v == m]
+        return [k for k, v in self.iteritems() if v == m]
 
     def percent(self, key):
        """Returns what percentage a certain key is of all entries.
@@ -249,7 +258,19 @@ class Counter(storage):
        
 counter = Counter
 
-iters = [list, tuple, set, frozenset]
+iters = [list, tuple]
+import __builtin__
+if hasattr(__builtin__, 'set'):
+    iters.append(set)
+if hasattr(__builtin__, 'frozenset'):
+    iters.append(set)
+if sys.version_info < (2,6): # sets module deprecated in 2.6
+    try:
+        from sets import Set
+        iters.append(Set)
+    except ImportError: 
+        pass
+    
 class _hack(tuple): pass
 iters = _hack(iters)
 iters.__doc__ = """
@@ -270,7 +291,7 @@ def _strips(direction, text, remove):
         if text.endswith(remove):   
             return text[:-len(remove)]
     else: 
-        raise ValueError("Direction needs to be r or l.")
+        raise ValueError, "Direction needs to be r or l."
     return text
 
 def rstrips(text, remove):
@@ -321,26 +342,17 @@ def safeunicode(obj, encoding='utf-8'):
         u'\u1234'
     """
     t = type(obj)
-    if t is text_type:
+    if t is unicode:
         return obj
-    elif t is bytes:
+    elif t is str:
         return obj.decode(encoding)
     elif t in [int, float, bool]:
         return unicode(obj)
-    #elif hasattr(obj, '__unicode__') or isinstance(obj, unicode):
-    #    return unicode(obj)
-    #else:
-    #    return str(obj).decode(encoding)
-    else:
+    elif hasattr(obj, '__unicode__') or isinstance(obj, unicode):
         return unicode(obj)
-
-if PY2:
-    def is_iter(obj):
-        return hasattr(obj, 'next')
-else:
-    def is_iter(obj):
-        return hasattr(obj, '__next__')
-
+    else:
+        return str(obj).decode(encoding)
+    
 def safestr(obj, encoding='utf-8'):
     r"""
     Converts any given object to utf-8 encoded string. 
@@ -352,12 +364,12 @@ def safestr(obj, encoding='utf-8'):
         >>> safestr(2)
         '2'
     """
-    if isinstance(obj, text_type):
+    if isinstance(obj, unicode):
         return obj.encode(encoding)
-    elif isinstance(obj, bytes):
+    elif isinstance(obj, str):
         return obj
-    elif is_iter(obj):
-        return imap(safestr, obj)
+    elif hasattr(obj, 'next'): # iterator
+        return itertools.imap(safestr, obj)
     else:
         return str(obj)
 
@@ -407,9 +419,9 @@ def timelimit(timeout):
             c = Dispatch()
             c.join(timeout)
             if c.isAlive():
-                raise TimeoutError('took too long')
+                raise TimeoutError, 'took too long'
             if c.error:
-                raise c.error[1]
+                raise c.error[0], c.error[1]
             return c.result
         return _2
     return _1
@@ -531,8 +543,8 @@ def group(seq, size):
         [[1, 2], [3, 4], [5]]
     """
     def take(seq, n):
-        for i in range(n):
-            yield next(seq)
+        for i in xrange(n):
+            yield seq.next()
 
     if not hasattr(seq, 'next'):  
         seq = iter(seq)
@@ -660,7 +672,7 @@ class IterBetter:
     def __getitem__(self, i):
         #todo: slices
         if i < self.c: 
-            raise IndexError("already passed "+str(i))
+            raise IndexError, "already passed "+str(i)
         try:
             while i > self.c: 
                 self.i.next()
@@ -669,7 +681,7 @@ class IterBetter:
             self.c += 1
             return self.i.next()
         except StopIteration: 
-            raise IndexError(str(i))
+            raise IndexError, str(i)
             
     def __nonzero__(self):
         if hasattr(self, "__len__"):
@@ -718,7 +730,7 @@ def dictreverse(mapping):
         >>> dictreverse({1: 2, 3: 4})
         {2: 1, 4: 3}
     """
-    return dict([(value, key) for (key, value) in iteritems(mapping)])
+    return dict([(value, key) for (key, value) in mapping.iteritems()])
 
 def dictfind(dictionary, element):
     """
@@ -730,7 +742,7 @@ def dictfind(dictionary, element):
         3
         >>> dictfind(d, 5)
     """
-    for (key, value) in iteritems(dictionary):
+    for (key, value) in dictionary.iteritems():
         if element is value: 
             return key
 
@@ -746,7 +758,7 @@ def dictfindall(dictionary, element):
         []
     """
     res = []
-    for (key, value) in iteritems(dictionary):
+    for (key, value) in dictionary.iteritems():
         if element is value:
             res.append(key)
     return res
@@ -1044,7 +1056,7 @@ class CaptureStdout:
     Captures everything `func` prints to stdout and returns it instead.
     
         >>> def idiot():
-        ...     print("foo")
+        ...     print "foo"
         >>> capturestdout(idiot)()
         'foo\\n'
     
@@ -1147,25 +1159,25 @@ def tryall(context, prefix=None):
     """
     context = context.copy() # vars() would update
     results = {}
-    for (key, value) in iteritems(context):
+    for (key, value) in context.iteritems():
         if not hasattr(value, '__call__'): 
             continue
         if prefix and not key.startswith(prefix): 
             continue
-        print(key + ':', end=" ")
+        print key + ':',
         try:
             r = value()
             dictincr(results, r)
-            print(r)
+            print r
         except:
-            print('ERROR')
+            print 'ERROR'
             dictincr(results, 'ERROR')
-            print('   ' + '\n   '.join(traceback.format_exc().split('\n')))
+            print '   ' + '\n   '.join(traceback.format_exc().split('\n'))
         
-    print('-'*40)
-    print('results:')
+    print '-'*40
+    print 'results:'
     for (key, value) in results.iteritems():
-        print(' '*2, str(key)+':', value)
+        print ' '*2, str(key)+':', value
         
 class ThreadedDict(threadlocal):
     """
@@ -1280,7 +1292,7 @@ def autoassign(self, locals):
 
         def __init__(self, foo, bar, baz=1): autoassign(self, locals())
     """
-    for (key, value) in iteritems(locals):
+    for (key, value) in locals.iteritems():
         if key == 'self': 
             continue
         setattr(self, key, value)
@@ -1303,7 +1315,7 @@ def to36(q):
         ValueError: must supply a positive integer
     
     """
-    if q < 0: raise ValueError("must supply a positive integer")
+    if q < 0: raise ValueError, "must supply a positive integer"
     letters = "0123456789abcdefghijklmnopqrstuvwxyz"
     converted = []
     while q != 0:
@@ -1363,7 +1375,7 @@ def sendmail(from_address, to_address, subject, message, headers=None, **kw):
             filename = os.path.basename(a)
             mail.attach(filename, content, None)
         else:
-            raise ValueError("Invalid attachment: %s" % repr(a))
+            raise ValueError, "Invalid attachment: %s" % repr(a)
             
     mail.send()
 
@@ -1435,7 +1447,7 @@ class _EmailMessage:
         self.message.attach(msg)
 
     def prepare_message(self):
-        for k, v in iteritems(self.headers):
+        for k, v in self.headers.iteritems():
             if k.lower() == "content-type":
                 self.message.set_type(v)
             else:
@@ -1481,7 +1493,7 @@ class _EmailMessage:
             c = boto.ses.SESConnection(
               aws_access_key_id=webapi.config.get('aws_access_key_id'),
               aws_secret_access_key=web.api.config.get('aws_secret_access_key'))
-            c.send_raw_email(self.from_address, message_text, self.recipients)
+            c.send_raw_email(self.from_address, message_text, self.from_recipients)
         else:
             sendmail = webapi.config.get('sendmail_path', '/usr/sbin/sendmail')
         
@@ -1491,10 +1503,17 @@ class _EmailMessage:
                 
             cmd = [sendmail, '-f', self.from_address] + self.recipients
 
-            p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
-            p.stdin.write(message_text)
-            p.stdin.close()
-            p.wait()
+            if subprocess:
+                p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+                p.stdin.write(message_text)
+                p.stdin.close()
+                p.wait()
+            else:
+                i, o = os.popen2(cmd)
+                i.write(message)
+                i.close()
+                o.close()
+                del i, o
                 
     def __repr__(self):
         return "<EmailMessage>"

@@ -2,14 +2,12 @@
 Web application
 (from web.py)
 """
-from __future__ import print_function
+import webapi as web
+import webapi, wsgi, utils
+import debugerror
+import httpserver
 
-from . import webapi as web
-from . import webapi, wsgi, utils
-from . import debugerror
-from . import httpserver
-from .utils import lstrips, safeunicode
-from .py3helpers import iteritems, string_types
+from utils import lstrips, safeunicode
 import sys
 
 import urllib
@@ -17,9 +15,12 @@ import traceback
 import itertools
 import os
 import types
-from inspect import isclass
+from exceptions import SystemExit
 
-import wsgiref.handlers
+try:
+    import wsgiref.handlers
+except ImportError:
+    pass # don't break people with old Pythons
 
 __all__ = [
     "application", "auto_application",
@@ -241,7 +242,7 @@ class application:
             except (KeyboardInterrupt, SystemExit):
                 raise
             except:
-                print(traceback.format_exc(), file=web.debug)
+                print >> web.debug, traceback.format_exc()
                 raise self.internalerror()
         
         # processors must be applied in the resvere order. (??)
@@ -280,7 +281,7 @@ class application:
                     result = peep(result)
                 else:
                     result = [result]
-            except web.HTTPError as e:
+            except web.HTTPError, e:
                 result = [e.data]
 
             result = web.safestr(iter(result))
@@ -290,7 +291,7 @@ class application:
             
             def cleanup():
                 self._cleanup()
-                yield b'' # force this function to be a generator
+                yield '' # force this function to be a generator
                             
             return itertools.chain(result, cleanup())
 
@@ -333,49 +334,7 @@ class application:
         except ImportError:
             # we're not running from within Google App Engine
             return wsgiref.handlers.CGIHandler().run(wsgiapp)
-
-    def gaerun(self, *middleware):
-        """
-        Starts the program in a way that will work with Google app engine,
-        no matter which version you are using (2.5 / 2.7)
-
-        If it is 2.5, just normally start it with app.gaerun()
-
-        If it is 2.7, make sure to change the app.yaml handler to point to the
-        global variable that contains the result of app.gaerun()
-
-        For example:
-
-        in app.yaml (where code.py is where the main code is located)
-
-            handlers:
-            - url: /.*
-              script: code.app
-
-        Make sure that the app variable is globally accessible
-        """
-        wsgiapp = self.wsgifunc(*middleware)
-        try:
-            # check what version of python is running
-            version = sys.version_info[:2]
-            major   = version[0]
-            minor   = version[1]
-
-            if major != 2:
-                raise EnvironmentError("Google App Engine only supports python 2.5 and 2.7")
-
-            # if 2.7, return a function that can be run by gae
-            if minor == 7:
-                return wsgiapp
-            # if 2.5, use run_wsgi_app
-            elif minor == 5:
-                from google.appengine.ext.webapp.util import run_wsgi_app
-                return run_wsgi_app(wsgiapp)
-            else:
-                raise EnvironmentError("Not a supported platform, use python 2.5 or 2.7")
-        except ImportError:
-            return wsgiref.handlers.CGIHandler().run(wsgiapp)
-     
+    
     def load(self, env):
         """Initializes ctx using env."""
         ctx = web.ctx
@@ -415,11 +374,11 @@ class application:
 
         ctx.fullpath = ctx.path + ctx.query
         
-        for k, v in iteritems(ctx):
+        for k, v in ctx.iteritems():
             # convert all string values to unicode values and replace 
             # malformed data with a suitable replacement marker.
-            if isinstance(v, bytes):
-                ctx[k] = v.decode('utf-8', 'replace')
+            if isinstance(v, str):
+                ctx[k] = v.decode('utf-8', 'replace') 
 
         # status must always be str
         ctx.status = '200 OK'
@@ -436,13 +395,15 @@ class application:
             tocall = getattr(cls(), meth)
             return tocall(*args)
             
+        def is_class(o): return isinstance(o, (types.ClassType, type))
+            
         if f is None:
             raise web.notfound()
         elif isinstance(f, application):
             return f.handle_with_processors()
-        elif isclass(f):
+        elif is_class(f):
             return handle_class(f)
-        elif isinstance(f, string_types):
+        elif isinstance(f, basestring):
             if f.startswith('redirect '):
                 url = f.split(' ', 1)[1]
                 if web.ctx.method == "GET":
@@ -470,7 +431,7 @@ class application:
                     return f, None
                 else:
                     continue
-            elif isinstance(what, string_types):
+            elif isinstance(what, basestring):
                 what, result = utils.re_subm('^' + pat + '$', what, value)
             else:
                 result = utils.re_compile('^' + pat + '$').match(value)
