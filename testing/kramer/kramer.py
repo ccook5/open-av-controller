@@ -76,8 +76,6 @@ class kramer_matrix_p2000:
             print('data is not a valid response. Check IP address and protocol settings.')
             return False
 
-
-    
         puts = { 0x80:'0',
                  0x81:'1',
                  0x82:'2',
@@ -150,7 +148,6 @@ class kramer_matrix_p2000:
         self.send_message(MESSAGE)
                
 
-
     def get_ip_as_byte(self, ip):
         inputs = { 0:0x80, 1: 0x81, 2:0x82, 3:0x83, 4:0x84, 5:0x85, 6:0x86, 7:0x87, 8:0x88}
         return inputs[ip]
@@ -184,13 +181,13 @@ class kramer_matrix_p2000:
         self.sock.sendall(msg)
 
     def is_valid_response(self, msg):
-        if msg[0] & 0x40:
+        if ord(msg[0]) & 0x40:
             return True
         else:
             return False
         
     def decode_matrix_name(self, msg):
-        s = str(msg[1] - 128) + str(msg[2] - 128)
+        s = str(ord(msg[1]) - 128) + str(ord(msg[2]) - 128)
 
         if s[0] == '0':
             s = s[1:]
@@ -198,11 +195,11 @@ class kramer_matrix_p2000:
         return s
     
     def decode_matrix_suffix(self, msg):
-        return chr(msg[1] - 128) + chr(msg[2] - 128)
+        return chr(ord(msg[1]) - 128) + chr(ord(msg[2]) - 128)
 
     
     def decode_matrix_version(self, msg):
-        return str(msg[1] - 128) + '.' + str(msg[2] - 128)
+        return str(ord(msg[1]) - 128) + '.' + str(ord(msg[2]) - 128)
 
     def decode_error_msg(self, msg):
 
@@ -214,11 +211,11 @@ class kramer_matrix_p2000:
                         0x85: 'Valid Input',
                         0x86: 'RX buffer Overflow'}
         
-        if msg[0] == 0x50:
-            print ('error: ' + error_codes[msg[2] ] )
+        if ord(msg[0]) == 0x50:
+            print ('error: ' + error_codes[ord(msg[2]) ] )
 
-            if msg[2] == 0x84 or msg[2] == 0x85:
-                print(msg[2] - 0x80)
+            if ord(msg[2]) == 0x84 or ord(msg[2]) == 0x85:
+                print(ord(msg[2]) - 0x80)
 
             return True
         return False
