@@ -1,0 +1,138 @@
+    
+    body
+    {
+        margin:                  0px;
+        padding:                 0px;
+        font-family:             Futura, "Trebuchet MS", Arial, sans-serif;
+    }
+    
+    h1
+    {
+        margin:                  0px;
+        padding:                 20px;
+        background:              green;
+    }
+    
+    table
+    {
+        margin:                  0px;
+        border:                  0px solid grey;
+        border-collapse:         collapse;
+    }
+    
+    table thead td
+    {
+        border:                  0px solid grey;
+        padding-top:             10px;
+        padding-bottom:          10px;
+        padding-left:            20px;
+        padding-right:           20px;
+        text-align:              left;
+        font-weight:             bold;
+    }
+    
+    table thead td:first-child
+    {
+        border:                  0px solid grey;
+        padding-top:             10px;
+        padding-bottom:          10px;
+        padding-left:            20px;
+        padding-right:           20px;
+    }
+    
+    
+    table tr td
+    {
+        border:                  0px solid grey;
+        padding-top:             10px;
+        padding-bottom:          10px;
+        padding-left:            5px;
+        padding-right:           5px;
+    }
+    
+    
+    table tr td:first-child
+    {
+        border:                  0px solid grey;
+        padding-top:             10px;
+        padding-bottom:          10px;
+        padding-left:            5px;
+        padding-right:           5px;
+        text-align:              right;
+        font-weight:             bold;
+    }
+    
+# Highlight table elements on hover.
+    
+    table tr:hover td {
+        background:              lightgrey;
+    }
+    
+    table tr td:hover {
+        background:              grey;
+    }
+    
+    .hover
+    {
+        background-color:        #eee;
+    }
+
+# IPhone style toggle check box buttons
+    
+    div#itoggle
+    {
+        padding-left:            10px;
+    }
+    
+    div#itoggle label.ilabel
+    {
+        display:                 block;
+        font-size:               12px;
+        padding-bottom:          0px;
+        cursor:                  pointer;
+    }
+
+    div#itoggle label.itoggle,
+    div#itoggle label.itoggle span
+    {
+        display:                 block;
+        width:                   93px;
+        height:                  27px;
+        margin-bottom:           20px;
+        background:              url('./js/engage.itoggle/itoggle.png') left bottom no-repeat;
+        cursor:                  pointer;
+        text-indent:             -5000px;
+       -moz-border-radius:       4px;
+       -webkit-border-radius:    4px;
+       border-radius:            4px;
+    }
+    
+    div#itoggle label.itoggle.iToff
+    {
+        background-position:     right bottom;
+    }
+    
+    div#itoggle label.itoggle span
+    {
+        background-position:     left top;
+        margin: 0;
+    }
+    
+    div#itoggle input.iT_checkbox
+    {
+        position:                absolute;
+        top:                     -9999px;
+        left:                    -9999px;
+    }
+
+/*  
+    If you want the corners to be
+    transparent, add these two lines
+    to the main block above. Only
+    works on webkit and mozilla browsers
+    For more reliable results, make your
+    own png using the supplied .psd
+    
+    -moz-border-radius:          6px;
+    -webkit-border-radius:       6px;
+*/
