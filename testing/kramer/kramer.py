@@ -2,7 +2,7 @@
 import socket
 import time
 
-DEST      = "172.16.112.210"
+DEST      = "172.16.30.30"
 DEST_PORT = 5000
 
 
@@ -18,8 +18,10 @@ class kramer_matrix_p2000:
     
     def ident_switcher(self):
         matrix_name   = 'UNKNOWN'
+        matrix_prefix = ''
         matrix_suffix = ''
-        
+
+# Get matrix Name
         MESSAGE = b'\x3D\x81\x80\x81'
         self.send_message(MESSAGE)
                
@@ -34,8 +36,9 @@ class kramer_matrix_p2000:
 
 
         time.sleep(10)
-        
-        MESSAGE = b'\x3D\x81\x8a\x81'
+
+# Get Matrix Suffix
+        MESSAGE = b'\x3D\x81\x81\x81'
         self.send_message(MESSAGE)
                
         data_suffix, addr = self.sock.recvfrom(4) # buffer size is 4 bytes
@@ -48,8 +51,24 @@ class kramer_matrix_p2000:
         if not self.decode_error_msg(data_suffix):
             matrix_suffix = self.decode_matrix_suffix(data_suffix)
 
-        print('Matrix Name : ' + matrix_name + '(' + matrix_suffix + ')')
+
+# Get Matrix Prefix
+        MESSAGE = b'\x3D\x81\x8b\x81'
+        self.send_message(MESSAGE)
+               
+        data_prefix, addr = self.sock.recvfrom(4) # buffer size is 4 bytes
         
+        if not self.is_valid_response(data_prefix):
+            print('suffix is not a valid response. Check IP address and protocol settings.')
+            return False
+
+
+        if not self.decode_error_msg(data_prefix):
+            matrix_prefix = self.decode_matrix_suffix(data_prefix)
+
+        print('Matrix Name : ' + matrix_prefix + ' ' +matrix_name + '(' + matrix_suffix + ')')
+
+# Get Matrix Version
         MESSAGE = b'\x3D\x83\x80\x81'
         self.send_message(MESSAGE)
                
@@ -87,7 +106,7 @@ class kramer_matrix_p2000:
                  0x88:'8' }
         
 
-        print('Output : ' + str(output_num) + ' set to: ' + puts[ data[2] ] + '.')
+        print('Output : ' + str(output_num) + ' set to: ' + puts[ ord(data[2]) ] + '.')
 
     def set_output(self, output_num, input_num):
 
@@ -118,9 +137,8 @@ class kramer_matrix_p2000:
                  0x86:'6',
                  0x87:'7',
                  0x88:'8' }
-        print(data)
 
-        print('Output : ' + puts[data[2] ] + ' set to: ' + puts[ data[1] ] + '.')
+        print('Output : ' + puts[ ord(data[2]) ] + ' set to: ' + puts[ ord(data[1]) ] + '.')
 
     def store_memory(self, mem_num):
         if self.is_ip_num_valid(mem_num):
