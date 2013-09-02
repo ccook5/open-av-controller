@@ -106,11 +106,11 @@ class kramer_matrix_p2000:
                  0x88:'8' }
         
 
-        print('Output : ' + str(output_num) + ' set to: ' + puts[ ord(data[2]) ] + '.')
+        print('Output : ' + str(output_num) + ' is set to: ' + puts[ ord(data[2]) ] + '.')
 
     def set_output(self, output_num, input_num):
 
-        print('set output ' + str(output_num) + '>' + str(input_num))
+        print('setting output ' + str(output_num) + '>' + str(input_num))
         
         if not self.is_op_num_valid(output_num):
             print('output not valid')
@@ -138,7 +138,7 @@ class kramer_matrix_p2000:
                  0x87:'7',
                  0x88:'8' }
 
-        print('Output : ' + puts[ ord(data[2]) ] + ' set to: ' + puts[ ord(data[1]) ] + '.')
+        print('Output : ' + puts[ ord(data[2]) ] + ' should be set to: ' + puts[ ord(data[1]) ] + '.')
 
     def store_memory(self, mem_num):
         if self.is_ip_num_valid(mem_num):
