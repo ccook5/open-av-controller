@@ -206,15 +206,36 @@
 // Column Highlighting
    
     $("table").delegate('td','mouseover mouseleave', function(e) {
-    if (e.type == 'mouseover') {
-      $(this).parent().addClass("hover");
-      $("colgroup").eq($(this).index()).addClass("hover");
-    }
-    else {
-      $(this).parent().removeClass("hover");
-      $("colgroup").eq($(this).index()).removeClass("hover");
-    }
-});
+      if (e.type == 'mouseover')
+	  {
+        $(this).parent().addClass("hover");
+        $("colgroup").eq($(this).index()).addClass("hover");
+      }
+      else
+	  {
+        $(this).parent().removeClass("hover");
+        $("colgroup").eq($(this).index()).removeClass("hover");
+      }
+    });
+	
+	function check_status()
+	{
+	    $('td#pj_1').load("/api/status/1");
+	    $('td#pj_2').load("/api/status/2");
+	    $('td#pj_3').load("/api/status/3");
+	    $('td#pj_4').load("/api/status/4");
+	    $('td#pj_5').load("/api/status/5");
+	    $('td#pj_6').load("/api/status/6");
+	    $('td#pj_7').load("/api/status/7");
+	    $('td#pj_8').load("/api/status/8");
+	}
+	
+	check_status();
+	
+	setInterval(function() {
+		check_status();
+	}, 60000); // every second
+	
   });
   </script>
   
@@ -356,6 +377,11 @@
     -moz-border-radius:          6px;
     -webkit-border-radius:       6px;
 */
+	.preformatted {
+	    font-family: monospace;
+	    white-space: pre;
+	}
+	
   </style>
  </head>
  <body>
@@ -519,14 +545,14 @@
    </tr>
    <tr>
     <td>Status:</td>
-    <td id='pj_1'>Waiting...</td>
-    <td id='pj_2'>Waiting...</td>
-    <td id='pj_3'>Waiting...</td>
-    <td id='pj_4'>Waiting...</td>
-    <td id='pj_5'>Waiting...</td>
-    <td id='pj_6'>Waiting...</td>
-    <td id='pj_7'>Waiting...</td>
-    <td id='pj_8'>Waiting...</td>
+    <td class='preformatted' id='pj_1'>Waiting...</td>
+    <td class='preformatted'  id='pj_2'>Waiting...</td>
+    <td class='preformatted'  id='pj_3'>Waiting...</td>
+    <td class='preformatted'  id='pj_4'>Waiting...</td>
+    <td class='preformatted'  id='pj_5'>Waiting...</td>
+    <td class='preformatted'  id='pj_6'>Waiting...</td>
+    <td class='preformatted'  id='pj_7'>Waiting...</td>
+    <td class='preformatted'  id='pj_8'>Waiting...</td>
    </tr>
   </table>
   </div>

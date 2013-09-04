@@ -1,17 +1,19 @@
 import argparse
+
 from ConfigParser import (
     NoSectionError,
     SafeConfigParser as ConfigParser
 )
+
 from getpass import getpass
-from os import path
-from socket import socket
+from os      import path
+from socket  import socket
 import sys
 
 import appdirs
 
-from pjlink import Projector
-from pjlink import projector
+from pjlink          import Projector
+from pjlink          import projector
 from pjlink.cliutils import make_command
 
 def cmd_power(p, state=None):
@@ -58,21 +60,22 @@ def cmd_unmute(p, what):
 
 def cmd_info(p):
     info = [
-        ('Name', p.get_name().encode('utf-8')),
-        ('Manufacturer', p.get_manufacturer()),
-        ('Product Name', p.get_product_name()),
-        ('Other Info', p.get_other_info())
+        ('Name',         p.get_name        ().encode('utf-8')),
+        ('Manufacturer', p.get_manufacturer()                ),
+        ('Product Name', p.get_product_name()                ),
+        ('Other Info',   p.get_other_info  ()                )
     ]
     for key, value in info:
         print '%s: %s' % (key, value)
 
 def cmd_lamps(p):
     for i, (time, state) in enumerate(p.get_lamps(), 1):
-        print 'Lamp %d: %s (%d hours)' % (
-            i,
-            'on' if state else 'off',
-            time,
-        )
+        
+        on_off = 'off'
+        if state:
+            on_off = 'on'
+            
+        print 'Lamp %d: %s (%d hours)' % ( i, on_off, time, )
 
 def cmd_errors(p):
     for what, state in p.get_errors().items():
@@ -80,6 +83,7 @@ def cmd_errors(p):
 
 def make_parser():
     parser = argparse.ArgumentParser()
+    
     parser.add_argument('-p', '--projector')
 
     sub = parser.add_subparsers(title='command')
@@ -87,20 +91,20 @@ def make_parser():
     power = make_command(sub, 'power', cmd_power)
     power.add_argument('state', nargs='?', choices=('on', 'off'))
 
-    inpt = make_command(sub, 'input', cmd_input)
+    inpt  = make_command(sub, 'input', cmd_input)
     inpt.add_argument('source', nargs='?', choices=projector.SOURCE_TYPES)
     inpt.add_argument('number', nargs='?', choices='123456789', default='1')
 
     make_command(sub, 'inputs', cmd_inputs)
 
-    mute = make_command(sub, 'mute', cmd_mute)
-    mute.add_argument('what', nargs='?', choices=('video', 'audio', 'all'))
+    mute = make_command(sub,   'mute',   cmd_mute)
+    mute  .add_argument('what', nargs='?', choices=('video', 'audio', 'all'))
 
     unmute = make_command(sub, 'unmute', cmd_unmute)
     unmute.add_argument('what', nargs='?', choices=('video', 'audio', 'all'))
 
-    make_command(sub, 'info', cmd_info)
-    make_command(sub, 'lamps', cmd_lamps)
+    make_command(sub, 'info',   cmd_info)
+    make_command(sub, 'lamps',  cmd_lamps)
     make_command(sub, 'errors', cmd_errors)
 
     return parser
@@ -127,9 +131,9 @@ def resolve_projector(projector):
             if projector is None:
                 section = 'default'
 
-            host = config.get(section, 'host')
-            port = config.getint(section, 'port')
-            password = config.get(section, 'password') or None
+            host     = config.get   (section, 'host')
+            port     = config.getint(section, 'port')
+            password = config.get   (section, 'password') or None
 
         except (NoSectionError, IOError):
             if projector is None:
@@ -152,22 +156,29 @@ def main():
     projector = kwargs.pop('projector')
     host, port, password = resolve_projector(projector)
 
+
     sock = socket()
+    
     sock.connect((host, port))
     f = sock.makefile()
+
 
     if password:
         get_password = lambda: password
     else:
         get_password = getpass
 
+
     proj = Projector(f)
+
     rv = proj.authenticate(get_password)
     if rv is False:
         print>>sys.stderr, 'Incorrect password.'
         return
 
+
     func(proj, **kwargs)
+
 
 if __name__ == '__main__':
     main()
