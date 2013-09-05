@@ -16,71 +16,543 @@
   <script type="text/javascript" src="./js/engage.itoggle/engage.itoggle.1.7.js"></script>
   <link href="./js/engage.itoggle/engage.itoggle.css" rel="stylesheet" type="text/css" />
 
-  <script type="text/javascript" src="./js/main.js"></script>
-  <link href="./css/main.css" rel="stylesheet" type="text/css" />
+  <script>
+  $(function() {
+    $('#itoggle #check1').iToggle({
+        type:      'checkbox',
+        keepLabel: false,
+        speed:     300,
+        onClick: function(){
+            //Function here
+        },
+        onClickOn: function(){
+            //Function here
+        },
+        onClickOff: function(){
+            //Function here
+        },
+        onSlide: function(){
+            //Function here
+        },
+        onSlideOn: function(){
+            //Function here
+        },
+        onSlideOff: function(){
+            //Function here
+        },
+    });
+    $('#itoggle #check2').iToggle({
+        type:      'checkbox',
+        keepLabel: false,
+        speed:     300,
+        onClick: function(){
+            //Function here
+        },
+        onClickOn: function(){
+            //Function here
+        },
+        onClickOff: function(){
+            //Function here
+        },
+        onSlide: function(){
+            //Function here
+        },
+        onSlideOn: function(){
+            //Function here
+        },
+        onSlideOff: function(){
+            //Function here
+        },
+    });
+    $('#itoggle #check3').iToggle({
+        type:      'checkbox',
+        keepLabel: false,
+        speed:     300,
+        onClick: function(){
+            //Function here
+        },
+        onClickOn: function(){
+            //Function here
+        },
+        onClickOff: function(){
+            //Function here
+        },
+        onSlide: function(){
+            //Function here
+        },
+        onSlideOn: function(){
+            //Function here
+        },
+        onSlideOff: function(){
+            //Function here
+        },
+    });
+    $('#itoggle #check4').iToggle({
+        type:      'checkbox',
+        keepLabel: false,
+        speed:     300,
+        onClick: function(){
+            //Function here
+        },
+        onClickOn: function(){
+            //Function here
+        },
+        onClickOff: function(){
+            //Function here
+        },
+        onSlide: function(){
+            //Function here
+        },
+        onSlideOn: function(){
+            //Function here
+        },
+        onSlideOff: function(){
+            //Function here
+        },
+    });
+    $('#itoggle #check5').iToggle({
+        type:      'checkbox',
+        keepLabel: false,
+        speed:     300,
+        onClick: function(){
+            //Function here
+        },
+        onClickOn: function(){
+            //Function here
+        },
+        onClickOff: function(){
+            //Function here
+        },
+        onSlide: function(){
+            //Function here
+        },
+        onSlideOn: function(){
+            //Function here
+        },
+        onSlideOff: function(){
+            //Function here
+        },
+    });
+    $('#itoggle #check6').iToggle({
+        type:      'checkbox',
+        keepLabel: false,
+        speed:     300,
+        onClick: function(){
+            //Function here
+        },
+        onClickOn: function(){
+            //Function here
+        },
+        onClickOff: function(){
+            //Function here
+        },
+        onSlide: function(){
+            //Function here
+        },
+        onSlideOn: function(){
+            //Function here
+        },
+        onSlideOff: function(){
+            //Function here
+        },
+    });
+    $('#itoggle #check7').iToggle({
+        type:      'checkbox',
+        keepLabel: false,
+        speed:     300,
+        onClick: function(){
+            //Function here
+        },
+        onClickOn: function(){
+            //Function here
+        },
+        onClickOff: function(){
+            //Function here
+        },
+        onSlide: function(){
+            //Function here
+        },
+        onSlideOn: function(){
+            //Function here
+        },
+        onSlideOff: function(){
+            //Function here
+        },
+    });
+    $('#itoggle #check8').iToggle({
+        type:      'checkbox',
+        keepLabel: false,
+        speed:     300,
+        onClick: function(){
+            //Function here
+        },
+        onClickOn: function(){
+            //Function here
+        },
+        onClickOff: function(){
+            //Function here
+        },
+        onSlide: function(){
+            //Function here
+        },
+        onSlideOn: function(){
+            //Function here
+        },
+        onSlideOff: function(){
+            //Function here
+        },
+    });
+   
+// Column Highlighting
+   
+    $("table").delegate('td','mouseover mouseleave', function(e) {
+      if (e.type == 'mouseover')
+	  {
+        $(this).parent().addClass("hover");
+        $("colgroup").eq($(this).index()).addClass("hover");
+      }
+      else
+	  {
+        $(this).parent().removeClass("hover");
+        $("colgroup").eq($(this).index()).removeClass("hover");
+      }
+    });
+	
+	function check_status()
+	{
+	    $('td#pj_1').load("/api/status/1");
+	    $('td#pj_2').load("/api/status/2");
+	    $('td#pj_3').load("/api/status/3");
+	    $('td#pj_4').load("/api/status/4");
+	    $('td#pj_5').load("/api/status/5");
+	    $('td#pj_6').load("/api/status/6");
+	    $('td#pj_7').load("/api/status/7");
+	    $('td#pj_8').load("/api/status/8");
+	}
+	
+	check_status();
+	
+	setInterval(function() {
+		check_status();
+	}, 60000); // every second
+	
+  });
+  </script>
+  
+  <style>    
+    body
+    {
+        margin:                  0px;
+        padding:                 0px;
+        font-family:             Futura, "Trebuchet MS", Arial, sans-serif;
+    }
+    
+    h1
+    {
+        margin:                  0px;
+        padding:                 20px;
+        background:              green;
+    }
+    
+    table
+    {
+        margin:                  0px;
+        border:                  0px solid grey;
+        border-collapse:         collapse;
+    }
+    
+    table thead td
+    {
+        border:                  0px solid grey;
+        padding-top:             10px;
+        padding-bottom:          10px;
+        padding-left:            20px;
+        padding-right:           20px;
+        text-align:              left;
+        font-weight:             bold;
+    }
+    
+    table thead td:first-child
+    {
+        border:                  0px solid grey;
+        padding-top:             10px;
+        padding-bottom:          10px;
+        padding-left:            20px;
+        padding-right:           20px;
+    }
+    
+    
+    table tr td
+    {
+        border:                  0px solid grey;
+        padding-top:             10px;
+        padding-bottom:          10px;
+        padding-left:            5px;
+        padding-right:           5px;
+    }
+    
+    
+    table tr td:first-child
+    {
+        border:                  0px solid grey;
+        padding-top:             10px;
+        padding-bottom:          10px;
+        padding-left:            5px;
+        padding-right:           5px;
+        text-align:              right;
+        font-weight:             bold;
+    }
+    
+# Highlight table elements on hover.
+    
+    table tr:hover td {
+        background:              lightgrey;
+    }
+    
+    table tr td:hover {
+        background:              grey;
+    }
+    
+    .hover
+    {
+        background-color:        #eee;
+    }
 
+# IPhone style toggle check box buttons
+    
+    div#itoggle
+    {
+        padding-left:            10px;
+    }
+    
+    div#itoggle label.ilabel
+    {
+        display:                 block;
+        font-size:               12px;
+        padding-bottom:          0px;
+        cursor:                  pointer;
+    }
+
+    div#itoggle label.itoggle,
+    div#itoggle label.itoggle span
+    {
+        display:                 block;
+        width:                   93px;
+        height:                  27px;
+        margin-bottom:           20px;
+        background:              url('./js/engage.itoggle/itoggle.png') left bottom no-repeat;
+        cursor:                  pointer;
+        text-indent:             -5000px;
+       -moz-border-radius:       4px;
+       -webkit-border-radius:    4px;
+       border-radius:            4px;
+    }
+    
+    div#itoggle label.itoggle.iToff
+    {
+        background-position:     right bottom;
+    }
+    
+    div#itoggle label.itoggle span
+    {
+        background-position:     left top;
+        margin: 0;
+    }
+    
+    div#itoggle input.iT_checkbox
+    {
+        position:                absolute;
+        top:                     -9999px;
+        left:                    -9999px;
+    }
+
+/*  
+    If you want the corners to be
+    transparent, add these two lines
+    to the main block above. Only
+    works on webkit and mozilla browsers
+    For more reliable results, make your
+    own png using the supplied .psd
+    
+    -moz-border-radius:          6px;
+    -webkit-border-radius:       6px;
+*/
+	.preformatted {
+	    font-family: monospace;
+	    white-space: pre;
+	}
+	
+  </style>
  </head>
  <body>
   <h1>AV Controller</h1>
   
   <div id="itoggle" class="project">
   <table>
-    <colgroup></colgroup><colgroup></colgroup><colgroup></colgroup><colgroup></colgroup>
-    <colgroup></colgroup><colgroup></colgroup><colgroup></colgroup><colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
     <colgroup></colgroup>
    <thead>
-    <td>Output:</td><td>Main Screen</td><td>Right Side Screen</td><td>Left Side Screen</td>
-    <td>Rear Screen</td><td>Stage Plasma</td><td>Outside Hall</td>
-    <td>Reception</td><td>Preview</td>
+    <td>Output:</td>
+    <td>Main Screen</td>
+    <td>Right Side Screen</td>
+    <td>Left Side Screen</td>
+    <td>Rear Screen</td>
+    <td>Stage Plasma</td>
+    <td>Outside Hall</td>
+    <td>Reception</td>
+    <td>Preview</td>
    </thead>
    <tr>
     <td>Enable:</td>
-    <td><input type="checkbox" id="check1" /><label for="check1">OFF</label></td>
-    <td><input type="checkbox" id="check2" /><label for="check2">OFF</label></td>
-    <td><input type="checkbox" id="check3" /><label for="check3">OFF</label></td>
-    <td><input type="checkbox" id="check4" /><label for="check4">OFF</label></td>
-    <td><input type="checkbox" id="check5" /><label for="check5">OFF</label></td>
-    <td><input type="checkbox" id="check6" /><label for="check6">OFF</label></td>
-    <td><input type="checkbox" id="check7" /><label for="check7">OFF</label></td>
-    <td><input type="checkbox" id="check8" /><label for="check8">OFF</label></td>
+    <td>
+     <input type="checkbox" id="check1" /><label for="check1">OFF</label>
+    </td>
+    <td>
+     <input type="checkbox" id="check2" /><label for="check2">OFF</label>
+    </td>
+    <td>
+     <input type="checkbox" id="check3" /><label for="check3">OFF</label>
+    </td>
+    <td>
+     <input type="checkbox" id="check4" /><label for="check4">OFF</label>
+    </td>
+    <td>
+     <input type="checkbox" id="check5" /><label for="check5">OFF</label>
+    </td>
+    <td>
+     <input type="checkbox" id="check6" /><label for="check6">OFF</label>
+    </td>
+    <td>
+     <input type="checkbox" id="check7" /><label for="check7">OFF</label>
+    </td>
+    <td>
+     <input type="checkbox" id="check8" /><label for="check8">OFF</label>
+    </td>
    </tr>
    <tr>
     <td>Input:</td>
     <td>
-     <select class="select_input">     </select>
+     <select>
+      <option>Stage PC</option>
+      <option>Stage DVD Player</option>
+      <option>Control Booth PC</option>
+      <option>Control Booth DVD</option>
+      <option>Digital Signage</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+     </select>
     </td>
     <td>
-     <select class="select_input">     </select>
+     <select>
+      <option>Stage PC</option>
+      <option>Stage DVD Player</option>
+      <option>Control Booth PC</option>
+      <option>Control Booth DVD</option>
+      <option>Digital Signage</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+     </select>
     </td>
     <td>
-     <select class="select_input">     </select>
+     <select>
+      <option>Stage PC</option>
+      <option>Stage DVD Player</option>
+      <option>Control Booth PC</option>
+      <option>Control Booth DVD</option>
+      <option>Digital Signage</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+     </select>
     </td>
     <td>
-     <select class="select_input">     </select>
+     <select>
+      <option>Stage PC</option>
+      <option>Stage DVD Player</option>
+      <option>Control Booth PC</option>
+      <option>Control Booth DVD</option>
+      <option>Digital Signage</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+     </select>
     </td>
     <td>
-     <select class="select_input">     </select>
+     <select>
+      <option>Stage PC</option>
+      <option>Stage DVD Player</option>
+      <option>Control Booth PC</option>
+      <option>Control Booth DVD</option>
+      <option>Digital Signage</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+     </select>
     </td>
     <td>
-     <select class="select_input">     </select>
+     <select>
+      <option>Stage PC</option>
+      <option>Stage DVD Player</option>
+      <option>Control Booth PC</option>
+      <option>Control Booth DVD</option>
+      <option>Digital Signage</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+     </select>
     </td>
     <td>
-     <select class="select_input">     </select>
+     <select>
+      <option>Stage PC</option>
+      <option>Stage DVD Player</option>
+      <option>Control Booth PC</option>
+      <option>Control Booth DVD</option>
+      <option>Digital Signage</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+     </select>
     </td>
     <td>
-     <select class="select_input">     </select>
+     <select>
+      <option>Stage PC</option>
+      <option>Stage DVD Player</option>
+      <option>Control Booth PC</option>
+      <option>Control Booth DVD</option>
+      <option>Digital Signage</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+      <option>Blank</option>
+     </select>
     </td>
    </tr>
    <tr>
     <td>Status:</td>
-    <td>Waiting...</td>
-    <td>Waiting...</td>
-    <td>Waiting...</td>
-    <td>Waiting...</td>
-    <td>Waiting...</td>
-    <td>Waiting...</td>
-    <td>Waiting...</td>
-    <td>Waiting...</td>
+    <td class='preformatted' id='pj_1'>Waiting...</td>
+    <td class='preformatted'  id='pj_2'>Waiting...</td>
+    <td class='preformatted'  id='pj_3'>Waiting...</td>
+    <td class='preformatted'  id='pj_4'>Waiting...</td>
+    <td class='preformatted'  id='pj_5'>Waiting...</td>
+    <td class='preformatted'  id='pj_6'>Waiting...</td>
+    <td class='preformatted'  id='pj_7'>Waiting...</td>
+    <td class='preformatted'  id='pj_8'>Waiting...</td>
    </tr>
   </table>
   </div>
