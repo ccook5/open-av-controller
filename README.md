@@ -3,7 +3,7 @@ open-av-controller
 
 Program to control Pro av systems including PJLink projectors, Kramer(tm) video switchers and the Behringer(tm) x32.
 
-This isn't at a usable stage yet. Kramer and Behringer are not involved in this project, so please don't ask them about it.
+This isn't at a usable stage yet. Kramer and Behringer are not involved in this project, so please don't ask them for help with it.
 
 This will have two halves, a python web.py/jquery program to control everything, and then an arduino ethernet program to provide a physical interface.
 
