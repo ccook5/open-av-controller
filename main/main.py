@@ -3,16 +3,15 @@ import web
 import subprocess
         
 urls = (
-    '/', 'hello',
+    '/', 'root',
     '/api/enable/(\d+)',        'enable',
     '/api/disable/(\d+)',       'disable',
-    '/api/enable_toggle/(\d+)', 'enable_toggle',
     '/api/input/(\d+)',         'input',
     '/api/status/(\d+)',        'status'
 )
 app = web.application(urls, globals())
 
-class hello:        
+class root:        
     def GET(self):
         web.redirect('static/')
 
@@ -20,6 +19,12 @@ class enable:
     def GET(self, id):
         id = int(id)
         print 'enable', id
+        raise web.seeother('/')
+        
+class disable:
+    def GET(self, id):
+        id = int(id)
+        print 'disable', id
         raise web.seeother('/')
         
 class input:
