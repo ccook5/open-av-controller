@@ -33,8 +33,8 @@ class status:
         id = int(id)
         
         if id == 1:
-            data = subprocess.check_output(["python", "../pjlink/cli.py", "-p", "mainhallcentre", "errors"])    
-            data += subprocess.check_output(["python", "../pjlink/cli.py", "-p", "mainhallcentre", "lamps"])    
+            data = subprocess.check_output(["python", "pjlink/cli.py", "-p", "mainhallcentre", "errors"])    
+            data += subprocess.check_output(["python", "pjlink/cli.py", "-p", "mainhallcentre", "lamps"])    
             return data
         else:
             return 'ok'
