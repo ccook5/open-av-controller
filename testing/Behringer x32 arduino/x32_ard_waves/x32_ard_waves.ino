@@ -10,16 +10,16 @@ EthernetUDP Udp;
  *
  * This sketch is for a controller for a Behringer x32 Sound desk.
  *
- * It will make the faders move in a sine wave
+ * It will (should) make the faders move in a sine wave
  *
  * This is provided for information only, and you use it at your own risk.
  *
  * Installing:
  * 
  * You will need to do the following steps:
- * 1. change the mac address below to match your arduino.
+ * 1. Change the mac address below to match your arduino.
  * 3. Compile and upload this sketch using the arduino software.
- * 4. Test with your Behringer x32. Please turn off all your amps/inductive loops 
+ * 4. Test with your Behringer x32. Please turn off all your amps/inductive loops/outputs
  *    etc to protect your system until you are happy this works.
  * 5. Enjoy.
  * 
@@ -74,9 +74,26 @@ char*            channel_address[] = { "/bus/01/mix/fader",
 void setup()
 {
     Serial.begin(9600);
-/*
+
+    Serial.println("Booting, please wait....");
+    Serial.println("Booting may take up to 2 minutes.");
+    Serial.println("Initialising Ethernet: ");
+    
     Ethernet.begin(mac, ourIp);
-    Udp.begin(10023);*/
+
+/*    if (Ethernet.begin(mac) == 0)
+    {
+        Serial.println("Failed to configure Ethernet using DHCP");
+        
+        Ethernet.begin(mac, ourIp);
+    } else {    
+        Serial.println("done!");
+    }
+  */  
+// print your local IP address:
+    Serial.println(Ethernet.localIP());
+    
+    Udp.begin(10023);
 }
 
 float deg2rads(int deg)
@@ -84,9 +101,9 @@ float deg2rads(int deg)
     return deg * (3.1412 / 180);
 }
 
-void read_and_send_channel(int channel, int step_no)
+void send_channel(int channel, int step_no)
 {
-    float value = (sin(deg2rads((channel + step_no) *30)) / 2) + 0.5;
+    float value = (sin(deg2rads((channel + step_no) * 30)) / 2) + 0.5;
     
     Serial.print(step_no);
     Serial.print(" channel: ");
@@ -97,9 +114,10 @@ void read_and_send_channel(int channel, int step_no)
     OSCMessage msg(channel_address[channel]);
     msg.add( value );
       
-    Udp.beginPacket(ourIp, ourPort);
+    Udp.beginPacket(destinationIp, destinationPort);
     msg.send(Udp);
     Udp.endPacket();
+
     msg.empty();
 }
 
@@ -109,7 +127,7 @@ void loop()
     {
         for (int c = 0; c < 24; c++)
         {
-            read_and_send_channel(c, i);
+            send_channel(c, i);
         }
         delay(200);
     }
