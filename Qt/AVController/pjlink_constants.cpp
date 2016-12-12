@@ -6,11 +6,11 @@
 
 #include <QString>
 
-QString translate (QString a, QString msg)
+/*QString translate (QString a, QString msg)
 {
     return msg;
 }
-
+*/
 
 //PJLINK_VALID_CMD = {'1': ['PJLINK',  # Initial connection
 //                          'POWR',  # Power option

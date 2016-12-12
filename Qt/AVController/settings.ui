@@ -14,184 +14,14 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QGroupBox" name="grpSRProj">
-     <property name="title">
-      <string>Stage Right Projector</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="4" column="2">
-       <widget class="QLineEdit" name="editProjAddrSR">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLineEdit" name="lineEdit_2">
-        <property name="text">
-         <string>FF 10 11 00 EE</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_19">
-        <property name="text">
-         <string>Projector Address</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Screen down code</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="text">
-         <string>FF 10 11 00 DD</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLineEdit" name="lineEdit_3">
-        <property name="text">
-         <string>FF 10 11 00 CC</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Screen stop code</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QComboBox" name="cbSRProjComPort"/>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Screen up code</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Com Port</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_17">
-        <property name="text">
-         <string>Projector input</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="2">
-       <widget class="QComboBox" name="comboBox"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QGroupBox" name="grpRearProj">
-     <property name="title">
-      <string>Rear Projector</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_6">
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_13">
-        <property name="text">
-         <string>FF 10 11 00 EE</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_14">
-        <property name="text">
-         <string>Screen stop code</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string>Screen down code</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit_15">
-        <property name="text">
-         <string>FF 10 11 00 DD</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_23">
-        <property name="text">
-         <string>Projector address</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_13">
-        <property name="text">
-         <string>Screen up code</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="editProjAddrRr">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_14">
-        <property name="text">
-         <string>FF 10 11 00 CC</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QComboBox" name="cbRearProjComPort"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>Com Port</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_24">
-        <property name="text">
-         <string>Projector input</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QComboBox" name="comboBox_4"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0">
+   <item row="3" column="0">
     <widget class="QGroupBox" name="grpMainSettings">
      <property name="title">
       <string>Other Settings</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_5">
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit_12">
+       <widget class="QLineEdit" name="MatrixAddress">
         <property name="text">
          <string>cgdmatrix</string>
         </property>
@@ -218,7 +48,7 @@
        <widget class="QLineEdit" name="lineEdit_11"/>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label_10">
+       <widget class="QLabel" name="lblMatrixAddr">
         <property name="text">
          <string>Matrix Address</string>
         </property>
@@ -237,189 +67,401 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QGroupBox" name="grpFrontProj">
+   <item row="3" column="1">
+    <widget class="QGroupBox" name="grpProj4">
      <property name="title">
-      <string>Front Projector</string>
+      <string>Projector 4</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="1" column="0">
-       <widget class="QLabel" name="lblFRProjScrDown">
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="Proj4ScreenDownCode">
+        <property name="text">
+         <string>FF 10 11 00 EE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lblProj4Address">
+        <property name="text">
+         <string>Projector address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lblProj4ScreenDownCode">
         <property name="text">
          <string>Screen down code</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="editFRProjScrUp">
+      <item row="3" column="0">
+       <widget class="QLabel" name="lblProj4ScreenStopCode">
+        <property name="text">
+         <string>Screen stop code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblProj4ScreenUpCode">
+        <property name="text">
+         <string>Screen up code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="Proj4ScreenUpCode">
         <property name="text">
          <string>FF 10 11 00 DD</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QLineEdit" name="editProjAddrFR">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
+       <widget class="QComboBox" name="Proj4ComPort"/>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="lblFRProjAddr">
-        <property name="text">
-         <string>Projector address</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="editFRProjScrDown">
-        <property name="text">
-         <string>FF 10 11 00 EE</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="editFRProjScrStop">
-        <property name="text">
-         <string>FF 10 11 00 CC</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="lblFRProjScrStop">
-        <property name="text">
-         <string>Screen stop code</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="lblProj4ComPort">
         <property name="text">
          <string>Com Port</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="lblFRProjScrUp">
-        <property name="text">
-         <string>Screen up code</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QComboBox" name="cbFRProjComPort"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_18">
+      <item row="6" column="0">
+       <widget class="QLabel" name="lblProj4Input">
         <property name="text">
          <string>Projector input</string>
         </property>
        </widget>
       </item>
+      <item row="6" column="1">
+       <widget class="QComboBox" name="Proj4Input"/>
+      </item>
       <item row="5" column="1">
-       <widget class="QComboBox" name="comboBox_2"/>
+       <widget class="QLineEdit" name="Proj4Address">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="Proj4ScreenStopCode">
+        <property name="text">
+         <string>FF 10 11 00 CC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="Proj4Name"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblProj4Name">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
       </item>
      </layout>
-     <zorder>lblFRProjScrUp</zorder>
-     <zorder>editFRProjScrDown</zorder>
-     <zorder>lblFRProjScrStop</zorder>
-     <zorder>editFRProjScrStop</zorder>
-     <zorder>lblFRProjScrDown</zorder>
-     <zorder>editFRProjScrUp</zorder>
-     <zorder>lblFRProjAddr</zorder>
-     <zorder>editProjAddrFR</zorder>
-     <zorder>cbFRProjComPort</zorder>
-     <zorder>label_5</zorder>
-     <zorder>label_18</zorder>
-     <zorder>comboBox_2</zorder>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="grpProj1">
+     <property name="title">
+      <string>Projector 1</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="2">
+       <widget class="QLineEdit" name="Proj1ScreenDownCode">
+        <property name="text">
+         <string>FF 10 11 00 EE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lblProj1ProjectorAddr">
+        <property name="text">
+         <string>Projector Address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLineEdit" name="Proj1Address">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLineEdit" name="Proj1ScreenStopCode">
+        <property name="text">
+         <string>FF 10 11 00 CC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QComboBox" name="Proj1ComPort"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lblProj1ScnStopCode">
+        <property name="text">
+         <string>Screen stop code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="Proj1ScreenUpCode">
+        <property name="text">
+         <string>FF 10 11 00 DD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lblProj1ScnDownCode">
+        <property name="text">
+         <string>Screen down code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblProj1ScnUpCode">
+        <property name="text">
+         <string>Screen up code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lblProj1ComPort">
+        <property name="text">
+         <string>Com Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="lblProj1Input">
+        <property name="text">
+         <string>Projector input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QComboBox" name="Proj1Input"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="Proj1Name"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblProjName">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QGroupBox" name="grpProj2">
+     <property name="title">
+      <string>Projector 2</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="Proj2ScreenUpCode">
+        <property name="text">
+         <string>FF 10 11 00 DD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lblProj2ScreenDown">
+        <property name="text">
+         <string>Screen down code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="Proj2Address">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lblProj2Address">
+        <property name="text">
+         <string>Projector address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="Proj2ScreenDownCode">
+        <property name="text">
+         <string>FF 10 11 00 EE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblProj2ScreenUp">
+        <property name="text">
+         <string>Screen up code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lblProj2ScreenStop">
+        <property name="text">
+         <string>Screen stop code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="Proj2ScreenStopCode">
+        <property name="text">
+         <string>FF 10 11 00 CC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="Proj2ComPort"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lblProj2ComPort">
+        <property name="text">
+         <string>Com Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="lblProj2Input">
+        <property name="text">
+         <string>Projector input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QComboBox" name="Proj2Input"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="Proj2Name"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblProj2Name">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>lblProj2ScreenUp</zorder>
+     <zorder>Proj2ScreenDownCode</zorder>
+     <zorder>lblProj2ScreenStop</zorder>
+     <zorder>Proj2ScreenStopCode</zorder>
+     <zorder>lblProj2ScreenDown</zorder>
+     <zorder>Proj2ScreenUpCode</zorder>
+     <zorder>lblProj2Address</zorder>
+     <zorder>Proj2Address</zorder>
+     <zorder>Proj2ComPort</zorder>
+     <zorder>lblProj2ComPort</zorder>
+     <zorder>lblProj2Input</zorder>
+     <zorder>Proj2Input</zorder>
+     <zorder>Proj2Name</zorder>
+     <zorder>lblProj2Name</zorder>
     </widget>
    </item>
    <item row="0" column="2">
-    <widget class="QGroupBox" name="grpSLProj">
+    <widget class="QGroupBox" name="grpProj3">
      <property name="title">
-      <string>Stage Left Projector</string>
+      <string>Projector 3</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_7">
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblProj3ScreenUpCode">
         <property name="text">
          <string>Screen up code</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_8">
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="Proj3ScreeenStopCode">
         <property name="text">
          <string>FF 10 11 00 CC</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_9">
+      <item row="4" column="1">
+       <widget class="QComboBox" name="Proj3ComPort"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lblProj3ScreenDownCode">
         <property name="text">
          <string>Screen down code</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_8">
+      <item row="3" column="0">
+       <widget class="QLabel" name="lblProj3ScreenStopCode">
         <property name="text">
          <string>Screen stop code</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit_9">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="Proj3ScreenUpCode">
         <property name="text">
          <string>FF 10 11 00 DD</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_7">
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="Proj3ScreenDownCode">
         <property name="text">
          <string>FF 10 11 00 EE</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QComboBox" name="cbSLProjComPort"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_21">
-        <property name="text">
-         <string>Projector address</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Com Port</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="editProjAddrSL">
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="Proj3Address">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_20">
+      <item row="6" column="0">
+       <widget class="QLabel" name="lblProj3Input">
         <property name="text">
          <string>Projector input</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="QComboBox" name="comboBox_3"/>
+      <item row="6" column="1">
+       <widget class="QComboBox" name="Proj3Input"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lblProj3Address">
+        <property name="text">
+         <string>Projector address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lblProj3Comport">
+        <property name="text">
+         <string>Com Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="Proj3Name"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblProj3Name">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3">
+   <item row="5" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -429,26 +471,60 @@
      </property>
     </widget>
    </item>
+   <item row="3" column="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="btnSerialSettings">
+        <property name="text">
+         <string>Serial Port Settings</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cmbMode">
+        <item>
+         <property name="text">
+          <string>Simple Mode</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Advanced Mode</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="cbFullscreen">
+        <property name="text">
+         <string>Fullscreen</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>143</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>Settings</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
@@ -461,6 +537,22 @@
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Settings</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
      <y>274</y>
     </hint>
    </hints>

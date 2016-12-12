@@ -20,17 +20,20 @@ TEMPLATE = app
 SOURCES += main.cpp \
     serialportlist.cpp \
     mainwindow.cpp \
+    settings.cpp \
+    pjlink.cpp \
     pjlink_constants.cpp \
-    log.cpp \
-    projector.cpp
+    log.cpp
 
 HEADERS  += \
     serialportlist.h \
     mainwindow.h \
+    settings.h \
+    pjlink.h \
     pjlink_constants.h \
-    log.h \
-    projector.h
+    log.h
 
 FORMS    += \
     serialportlist.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    settings.ui
