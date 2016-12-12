@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Settings</class>
+ <widget class="QDialog" name="Settings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="grpSRProj">
+     <property name="title">
+      <string>Stage Right Projector</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="4" column="2">
+       <widget class="QLineEdit" name="editProjAddrSR">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="lineEdit_2">
+        <property name="text">
+         <string>FF 10 11 00 EE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Projector Address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Screen down code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="text">
+         <string>FF 10 11 00 DD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLineEdit" name="lineEdit_3">
+        <property name="text">
+         <string>FF 10 11 00 CC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Screen stop code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QComboBox" name="cbSRProjComPort"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Screen up code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Com Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Projector input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QComboBox" name="comboBox"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QGroupBox" name="grpRearProj">
+     <property name="title">
+      <string>Rear Projector</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_13">
+        <property name="text">
+         <string>FF 10 11 00 EE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Screen stop code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>Screen down code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_15">
+        <property name="text">
+         <string>FF 10 11 00 DD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_23">
+        <property name="text">
+         <string>Projector address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Screen up code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="editProjAddrRr">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_14">
+        <property name="text">
+         <string>FF 10 11 00 CC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="cbRearProjComPort"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>Com Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_24">
+        <property name="text">
+         <string>Projector input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="comboBox_4"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="grpMainSettings">
+     <property name="title">
+      <string>Other Settings</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_12">
+        <property name="text">
+         <string>cgdmatrix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_10"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_11"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Matrix Address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_22">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEdit_22"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QGroupBox" name="grpFrontProj">
+     <property name="title">
+      <string>Front Projector</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblFRProjScrDown">
+        <property name="text">
+         <string>Screen down code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="editFRProjScrUp">
+        <property name="text">
+         <string>FF 10 11 00 DD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="editProjAddrFR">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lblFRProjAddr">
+        <property name="text">
+         <string>Projector address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="editFRProjScrDown">
+        <property name="text">
+         <string>FF 10 11 00 EE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="editFRProjScrStop">
+        <property name="text">
+         <string>FF 10 11 00 CC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lblFRProjScrStop">
+        <property name="text">
+         <string>Screen stop code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Com Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblFRProjScrUp">
+        <property name="text">
+         <string>Screen up code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="cbFRProjComPort"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_18">
+        <property name="text">
+         <string>Projector input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="comboBox_2"/>
+      </item>
+     </layout>
+     <zorder>lblFRProjScrUp</zorder>
+     <zorder>editFRProjScrDown</zorder>
+     <zorder>lblFRProjScrStop</zorder>
+     <zorder>editFRProjScrStop</zorder>
+     <zorder>lblFRProjScrDown</zorder>
+     <zorder>editFRProjScrUp</zorder>
+     <zorder>lblFRProjAddr</zorder>
+     <zorder>editProjAddrFR</zorder>
+     <zorder>cbFRProjComPort</zorder>
+     <zorder>label_5</zorder>
+     <zorder>label_18</zorder>
+     <zorder>comboBox_2</zorder>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QGroupBox" name="grpSLProj">
+     <property name="title">
+      <string>Stage Left Projector</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Screen up code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_8">
+        <property name="text">
+         <string>FF 10 11 00 CC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Screen down code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Screen stop code</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_9">
+        <property name="text">
+         <string>FF 10 11 00 DD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_7">
+        <property name="text">
+         <string>FF 10 11 00 EE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="cbSLProjComPort"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_21">
+        <property name="text">
+         <string>Projector address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Com Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="editProjAddrSL">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_20">
+        <property name="text">
+         <string>Projector input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="comboBox_3"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Settings</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Settings</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

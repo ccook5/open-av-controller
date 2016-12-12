@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>875</width>
+    <height>630</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Projector Controller</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="4" rowspan="2">
+     <widget class="QGroupBox" name="grpSLProj">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Stage Left Projector</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="2" column="0" colspan="3">
+        <widget class="QLabel" name="lblStatusSL">
+         <property name="text">
+          <string>waiting...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QComboBox" name="cmbSLProj">
+         <item>
+          <property name="text">
+           <string>1. PC</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2. Blu Ray</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3. Xibo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="3">
+        <widget class="QPushButton" name="btnSLProj">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Power On</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lblScrDownCodeSL">
+         <property name="text">
+          <string>Screen down code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="lblScrStopCodeSL">
+         <property name="text">
+          <string>Screen stop code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLineEdit" name="editScrStopCodeSL">
+         <property name="text">
+          <string>FF 10 11 00 CC</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblScrUpCodeSL">
+         <property name="text">
+          <string>Screen up code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="lblScrComPortSL">
+         <property name="text">
+          <string>Com Port</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QLineEdit" name="editProjAddrSL">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="lblProjAddrSL">
+         <property name="text">
+          <string>Projector address</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLineEdit" name="editScrUpCodeSL">
+         <property name="text">
+          <string>FF 10 11 00 DD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QComboBox" name="cbScrComPortSL"/>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLineEdit" name="editScrDownCodeSL">
+         <property name="text">
+          <string>FF 10 11 00 EE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QLineEdit" name="editProjPasswordSL">
+         <property name="text">
+          <string>panasonic</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="lblProjPasswordSL">
+         <property name="text">
+          <string>Projector Password</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="2" rowspan="2">
+     <widget class="QGroupBox" name="grpRearProj">
+      <property name="title">
+       <string>Rear Projector</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="5" column="0">
+        <widget class="QLabel" name="lblScrStopCodeRR">
+         <property name="text">
+          <string>Screen stop code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="editScrDownCodeRR">
+         <property name="text">
+          <string>FF 10 11 00 EE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblScrUpCodeRR">
+         <property name="text">
+          <string>Screen up code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lblScrDownCodeRR">
+         <property name="text">
+          <string>Screen down code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="editProjAddrRR">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="editScrUpCodeRR">
+         <property name="text">
+          <string>FF 10 11 00 DD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="cbScrComPortRR"/>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="lblProjAddrRR">
+         <property name="text">
+          <string>Projector address</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="editScrStopCodeRR">
+         <property name="text">
+          <string>FF 10 11 00 CC</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="lblScrComPortRR">
+         <property name="text">
+          <string>Com Port</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QPushButton" name="btnRearProj">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Power On</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QComboBox" name="cmbRearProj">
+         <item>
+          <property name="text">
+           <string>1. PC</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2. Blu Ray</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3. Xibo</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="lblStatusRR">
+         <property name="text">
+          <string>waiting...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLineEdit" name="editProjPasswordRR">
+         <property name="text">
+          <string>panasonic</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="lblProjPasswordRR">
+         <property name="text">
+          <string>Projector Password</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="4" rowspan="2">
+     <widget class="QGroupBox" name="gbSettings">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>-</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QPushButton" name="btnSettings">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Settings</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMinimize">
+         <property name="text">
+          <string>Minimuze</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Serial Port Info</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="lblStatusSettings">
+         <property name="text">
+          <string>waiting...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="lblStatus">
+      <property name="text">
+       <string>Status</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="3" colspan="2">
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" rowspan="2">
+     <widget class="QGroupBox" name="grpMainSettings">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Other Settings</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Matrix Address</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_12">
+         <property name="text">
+          <string>cgdmatrix</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0" rowspan="2">
+     <widget class="QGroupBox" name="gbxSRProj">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Stage Right Projector</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblScrUpCodeSR">
+         <property name="text">
+          <string>Screen up code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="editScrStopCodeSR">
+         <property name="text">
+          <string>FF 10 11 00 CC</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="cbScrComPortSR"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="lblScrComPortSR">
+         <property name="text">
+          <string>Com Port</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QPushButton" name="btnSRProj">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>20</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Power On</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="editScrUpCodeSR">
+         <property name="text">
+          <string>FF 10 11 00 DD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QComboBox" name="cmbSRProj">
+         <item>
+          <property name="text">
+           <string>1. PC</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2. Blu Ray</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3. Xibo</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="lblScrStopCodeSR">
+         <property name="text">
+          <string>Screen stop code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="lblProjAddrSR">
+         <property name="text">
+          <string>Projector Address</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="editProjAddrSR">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="editScrDownCodeSR">
+         <property name="text">
+          <string>FF 10 11 00 EE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lblScrDownCodeSR">
+         <property name="text">
+          <string>Screen down code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLineEdit" name="editProjPasswordSR">
+         <property name="text">
+          <string>panasonic</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="lblProjPasswordSR">
+         <property name="text">
+          <string>Projector Password</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="lblStatusSR">
+         <property name="text">
+          <string>waiting...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="2" rowspan="2">
+     <widget class="QGroupBox" name="grpFrontProj">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Front Projector</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblScrUpCodeFR">
+         <property name="text">
+          <string>Screen up code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="cbScrComPortFR"/>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QPushButton" name="btnFrontProj">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>20</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Power On</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QComboBox" name="cmbFrontProj">
+         <item>
+          <property name="text">
+           <string>1. PC</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2. Blu Ray</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3. Xibo</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="editScrDownCodeFR">
+         <property name="text">
+          <string>FF 10 11 00 EE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lblScrDownCodeFR">
+         <property name="text">
+          <string>Screen down code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="lblScrStopCodeFR">
+         <property name="text">
+          <string>Screen stop code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="editProjAddrFR">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="editScrUpCodeFR">
+         <property name="text">
+          <string>FF 10 11 00 DD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="lblScrComPortFR">
+         <property name="text">
+          <string>Com Port</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="lblProjAddrFR">
+         <property name="text">
+          <string>Projector address</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="editScrStopCodeFR">
+         <property name="text">
+          <string>FF 10 11 00 CC</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLineEdit" name="editProjPasswordFR">
+         <property name="text">
+          <string>panasonic</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="lblProjPasswordFr">
+         <property name="text">
+          <string>Projector Password</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="lblStatusFR">
+         <property name="text">
+          <string>waiting...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+      <zorder>lblScrComPortFR</zorder>
+      <zorder>lblScrUpCodeFR</zorder>
+      <zorder>editScrDownCodeFR</zorder>
+      <zorder>lblScrStopCodeFR</zorder>
+      <zorder>editScrStopCodeFR</zorder>
+      <zorder>lblScrDownCodeFR</zorder>
+      <zorder>editScrUpCodeFR</zorder>
+      <zorder>lblProjAddrFR</zorder>
+      <zorder>editProjAddrFR</zorder>
+      <zorder>cbScrComPortFR</zorder>
+      <zorder>btnFrontProj</zorder>
+      <zorder>cmbFrontProj</zorder>
+      <zorder>lblStatusFR</zorder>
+      <zorder>editProjPasswordFR</zorder>
+      <zorder>lblProjPasswordFr</zorder>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>875</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

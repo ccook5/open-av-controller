@@ -36,3 +36,8 @@ nosetests.xml
 
 # Mac Rubbish
 .DS_Store
+*.user
+Qt/AVController/AVController.pro.user.5319f46
+Qt/AVController/AVController.pro.user.aa875e9
+Qt/AVController/Makefile.Debug
+Qt/AVController/Makefile.Release
