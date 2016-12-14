@@ -62,7 +62,7 @@ QString PJLINK_ERRORS(int id)
     }
 }
 
-//# Map error/status codes to string
+// Map error/status codes to string
 
 QString ERROR_STRING(int id)
 {
@@ -238,12 +238,6 @@ QString PJLINK_ERST_STATUS(char id)
     }
 }
 
-// Map for POWR return codes to status code
-//PJLINK_POWR_STATUS = {'0': S_STANDBY,
-//                      '1': S_ON,
-//                      '2': S_COOLDOWN,
-//                      '3': S_WARMUP}
-
 //PJLINK_DEFAULT_SOURCES = {'1': translate('OpenLP.DB', 'RGB'),
 //                          '2': translate('OpenLP.DB', 'Video'),
 //                          '3': translate('OpenLP.DB', 'Digital'),
@@ -333,4 +327,18 @@ void init_pjlink_constants()
         E_PROXY_PROTOCOL,
         E_UNKNOWN_SOCKET_ERROR
     };
+}
+
+bool pjlink_isValidCmd(QString cmd_class, QString cmd)
+{
+    QStringList valid_commands = QString("PJLINK,POWR,INPT,AVMT,ERST,LAMP,INST,NAME,INF1,INF2,INFO,CLSS").split(',');
+
+    if (cmd_class == "1" && valid_commands.contains(cmd) )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

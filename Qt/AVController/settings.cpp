@@ -95,3 +95,26 @@ void Settings::on_cbFullscreen_toggled(bool checked)
 
     }
 }
+
+void Settings::on_Proj1Address_editingFinished()
+{
+    emit proj1_addr_changed(this->ui->Proj1Address->text());
+}
+
+void Settings::on_Proj2Address_editingFinished()
+{
+    emit proj2_addr_changed(this->ui->Proj2Address->text());
+}
+
+void Settings::on_Proj3Address_editingFinished()
+{
+    emit proj3_addr_changed(this->ui->Proj3Address->text());
+}
+
+void Settings::on_Proj4Address_editingFinished()
+{
+    emit proj4_addr_changed(this->ui->Proj4Address->text());
+}
+
+
+

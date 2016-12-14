@@ -51,10 +51,10 @@ private:
     QTimer tmr_get_P3_status;
     QTimer tmr_get_P4_status;
 
-    PjLink sr_projector;
-    PjLink sl_projector;
-    PjLink front_projector;
-    PjLink rear_projector;
+    PjLink* sr_projector;
+    PjLink* sl_projector;
+    PjLink* front_projector;
+    PjLink* rear_projector;
 
 
 private slots:

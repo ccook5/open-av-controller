@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 
 #include <QMessageBox>
+#include <QInputDialog>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -13,6 +14,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     settingsDlg = new Settings(this);
     settingsDlg->hide();
+
+    this->sl_projector    = new PjLink("192.168.0.213", 4352, "panasonic");
+    this->front_projector = new PjLink("192.168.0.212", 4352, "panasonic");
+    this->sr_projector    = new PjLink("192.168.0.215", 4352, "panasonic");
+    this->rear_projector  = new PjLink("192.168.0.214", 4352, "panasonic");
 
     this->SimpleMode();
 
@@ -26,6 +32,15 @@ MainWindow::MainWindow(QWidget *parent) :
     this->tmr_get_P3_status.start(10000);
     this->tmr_get_P4_status.start(10000);
 
+    connect(this->settingsDlg, SIGNAL(proj1_addr_changed(QString)), this->sr_projector,    SLOT(update_address(QString)));
+    connect(this->settingsDlg, SIGNAL(proj2_addr_changed(QString)), this->front_projector, SLOT(update_address(QString)));
+    connect(this->settingsDlg, SIGNAL(proj3_addr_changed(QString)), this->sl_projector,    SLOT(update_address(QString)));
+    connect(this->settingsDlg, SIGNAL(proj4_addr_changed(QString)), this->rear_projector,  SLOT(update_address(QString)));
+
+    connect(this->sr_projector,    SIGNAL(friendly_status_update(QString)), this->ui->lblStatus1, SLOT(setText(QString)));
+    connect(this->front_projector, SIGNAL(friendly_status_update(QString)), this->ui->lblStatus2, SLOT(setText(QString)));
+    connect(this->sl_projector,    SIGNAL(friendly_status_update(QString)), this->ui->lblStatus3, SLOT(setText(QString)));
+    connect(this->rear_projector,  SIGNAL(friendly_status_update(QString)), this->ui->lblStatus4, SLOT(setText(QString)));
 }
 
 MainWindow::~MainWindow()
@@ -56,7 +71,17 @@ void MainWindow::AdvancedMode()
 
 void MainWindow::on_btnSettings_clicked()
 {
-    this->settingsDlg->show();
+    bool ok;
+    QString text = QInputDialog::getText(this, "Password",
+                                         "Please enter password", QLineEdit::Password,
+                                         "", &ok);
+    if (ok && !text.isEmpty()) {
+        if (text == "1941") {
+            this->settingsDlg->show();
+            return;
+        }
+        QMessageBox::information(this, "incorrect password", "Please try again");
+    }
 }
 
 void MainWindow::on_btnMinimize_clicked()
@@ -114,7 +139,9 @@ void MainWindow::on_btnProj1On_clicked()
     foreach (QString n, l) {        ba.append(n.toInt(0, 16));    }
 
     this->settingsDlg->FRComPort.write(ba);
+
     // Projector
+    this->sr_projector->power_on();
 }
 
 void MainWindow::on_btnProj2On_clicked()
@@ -128,6 +155,9 @@ void MainWindow::on_btnProj2On_clicked()
 
     this->settingsDlg->FRComPort.write(ba);
 // Projector
+
+    // Projector
+    this->front_projector->power_on();
 }
 
 void MainWindow::on_btnProj3On_clicked()
@@ -141,6 +171,8 @@ void MainWindow::on_btnProj3On_clicked()
 
     this->settingsDlg->FRComPort.write(ba);
 // Projector
+    // Projector
+    this->sl_projector->power_on();
 }
 
 void MainWindow::on_btnProj4On_clicked()
@@ -154,6 +186,8 @@ void MainWindow::on_btnProj4On_clicked()
 
     this->settingsDlg->FRComPort.write(ba);
 // Projector
+    // Projector
+    this->rear_projector->power_on();
 }
 
 void MainWindow::on_btnProj1Off_clicked()
@@ -165,6 +199,8 @@ void MainWindow::on_btnProj1Off_clicked()
     foreach (QString n, l) {        ba.append(n.toInt(0, 16));    }
 
     this->settingsDlg->FRComPort.write(ba);
+    // Projector
+    this->sr_projector->power_off();
 }
 
 void MainWindow::on_btnProj2Off_clicked()

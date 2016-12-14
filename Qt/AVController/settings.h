@@ -37,6 +37,18 @@ private slots:
 
     void on_cbFullscreen_toggled(bool checked);
 
+    void on_Proj1Address_editingFinished();
+    void on_Proj2Address_editingFinished();
+    void on_Proj3Address_editingFinished();
+    void on_Proj4Address_editingFinished();
+
+
+signals:
+    void proj1_addr_changed(QString address);
+    void proj2_addr_changed(QString address);
+    void proj3_addr_changed(QString address);
+    void proj4_addr_changed(QString address);
+
 public:
     QSerialPort FRComPort;
     QSerialPort RearComPort;

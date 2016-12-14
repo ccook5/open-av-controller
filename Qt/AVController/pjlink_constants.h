@@ -35,25 +35,6 @@ const char LF = '\n'; // chr(0x0A)  # \n
 const int   PJLINK_PORT       = 4352;
 const float TIMEOUT           = 30.0;
 const int   PJLINK_MAX_PACKET = 136;
-
-
-// see PjLink class - now static functions
-//PJLINK_VALID_CMD = {'1': ['PJLINK',  # Initial connection
-//                          'POWR',  # Power option
-//                          'INPT',  # Video sources option
-//                          'AVMT',  # Shutter option
-//                          'ERST',  # Error status option
-//                          'LAMP',  # Lamp(s) query (Includes fans)
-//                          'INST',  # Input sources available query
-//                          'NAME',  # Projector name query
-//                          'INF1',  # Manufacturer name query
-//                          'INF2',  # Product name query
-//                          'INFO',  # Other information query
-//                          'CLSS'   # PJLink class support query
-//                          ]}
-
-
-
 // Error and status codes
 
 //const int S_OK = E_OK = 0  // E_OK included since I sometimes forget
