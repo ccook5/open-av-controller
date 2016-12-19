@@ -3,6 +3,7 @@
 #include "log.h"
 
 #include <QCryptographicHash>
+#include <QLineEdit>
 
 
 PjLink::PjLink(QString address, int port, QByteArray password)
@@ -47,9 +48,9 @@ PjLink::~PjLink()
 }
 
 
-void PjLink::update_address(QString address)
+void PjLink::update_address()
 {
-    this->address = address;
+    this->address = dynamic_cast<QLineEdit*>(sender())->text();
     this->reset_connection();
 }
 
@@ -67,6 +68,7 @@ void PjLink::process_loop()
             tcpSocket->connectToHost(this->address, this->port);
             this->session_timer->singleShot(30000, this, SLOT(reset_connection()));
         } else if (tcpSocket->state() != QAbstractSocket::ConnectedState) {
+            this->cmd_queue.clear();
             return;
         }
 
@@ -88,13 +90,12 @@ void PjLink::readyRead()
         if (data.split(' ')[1] == "1") {
             this->authenticated = false;
             this->random_no = data.split(' ')[2].toLocal8Bit();
-            QByteArray msg = this->random_no.simplified()+this->password.simplified();
-            this->encrypted_msg = QCryptographicHash::hash(msg, QCryptographicHash::Md5).toHex();
 
         } else if (data.split(' ')[1] == "0") {
             this->authenticated = true;
             return;
         } else {
+            this->reset_connection();
             log::error(QString("Error authenticating : ") + data);
         }
         return;
@@ -119,13 +120,13 @@ void PjLink::send_command   (QString cmd)
     QByteArray cmd_string;
 
     if (this->authenticated == false) {
-        cmd_string += this->encrypted_msg;
+        QByteArray msg = this->random_no.simplified()+this->password.simplified();
+
+        cmd_string += QCryptographicHash::hash(msg, QCryptographicHash::Md5).toHex();
     }
 
     cmd_string += "%1";
-
     cmd_string += cmd.toLocal8Bit();
-
     cmd_string += '\r';
 
     tcpSocket->write(cmd_string);
@@ -133,8 +134,8 @@ void PjLink::send_command   (QString cmd)
 
 void PjLink::reset_connection()
 {
-//    tcpSocket->disconnectFromHost();
-//    this->random_no = "";
+    tcpSocket->disconnectFromHost();
+    this->random_no = "";
     this->authenticated = false;
 }
 

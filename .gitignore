@@ -54,3 +54,12 @@ Qt/AVController/0.0.1/ui_mainwindow.h
 Qt/AVController/0.0.1/debug/moc_pjlink.cpp
 Qt/AVController/0.0.1/ui_serialportlist.h
 Qt/AVController/0.0.1/debug/moc_settings.cpp
+Qt/AVController/debug/moc_mainwindow.cpp
+Qt/AVController/debug/moc_serialportlist.cpp
+Qt/AVController/object_script.AVController.Debug
+Qt/AVController/ui_settings.h
+Qt/AVController/ui_settings.h
+Qt/AVController/debug/moc_settings.cpp
+Qt/AVController/debug/moc_pjlink.cpp
+Qt/AVController/ui_settings.h
+Qt/AVController/ui_mainwindow.h

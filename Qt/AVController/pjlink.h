@@ -30,7 +30,7 @@ public:
      * Normally called by timer().
      */
 private slots:
-    void update_address(QString address);
+    void update_address();
 
     void process_loop();
     void poll_loop         ();

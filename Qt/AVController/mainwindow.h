@@ -3,9 +3,10 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QSerialPort>
 
-#include "settings.h"
 #include "pjlink.h"
+#include "serialportlist.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +22,7 @@ public:
 
     virtual void SimpleMode();
     virtual void AdvancedMode();
+    void showHideSettings(bool show);
 
     void FRProjOn();
     void FRProjOff();
@@ -43,7 +45,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    Settings* settingsDlg;
+    SerialPortList* serialPortListDlg;
 
 
     QTimer tmr_get_P1_status;
@@ -55,6 +57,13 @@ private:
     PjLink* sl_projector;
     PjLink* front_projector;
     PjLink* rear_projector;
+
+    QSerialPort FRComPort;
+    QSerialPort RearComPort;
+    QSerialPort SRComPort;
+    QSerialPort SLComPort;
+
+    bool settings_enabled;
 
 
 private slots:
@@ -73,6 +82,9 @@ private slots:
     void on_btnProj2Off_clicked();
     void on_btnProj3Off_clicked();
     void on_btnProj4Off_clicked();
+    void on_cbFullscreen_toggled(bool checked);
+    void on_btnSerialSettings_clicked();
+    void on_cmbMode_currentIndexChanged(const QString &arg1);
 };
 
 #endif // MAINWINDOW_H
